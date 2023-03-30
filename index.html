@@ -1,28 +1,361 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
+
 	<title>Data Table</title>
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<link href="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.css" rel="stylesheet" />
+
+	<script src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.js"></script>
+
+<style>
+
+.positive {
+
+	background-color: #63F878;
+
+	}
+
+.negative {
+
+	background-color: #E25031;
+
+}
+
+</style>
+
 </head>
+
 <body>
-	<div class="container">
+
+
+
 	<table class="table table-bordered">
+
+		<thead>
+
 		<tr>
-			<th>ID</th>
-			<th>Name</th>
-			<th>Age</th>
+
+			<th>ENV_NAME</th>
+
+                        <th>DATE</th>
+
+			<th>GRAFANA_EXIST</th>
+
+			<th>GRAFANA_STATUS</th>
+
+			<th>PROMETHEUS_EXIST</th>
+
+			<th>PROMETHEUS_STATUS</th>
+
+			<th>PROMETHEUS_RATE_OF_JOBS</th>
+
+			<th>KAFDROP_EXIST</th>
+
+			<th>KAFDROP_STATUS</th>
+
+			<th>AKQH_EXIST</th>
+
+			<th>AKQH_STATUS</th>
+
+			<th>ELASTICSEARCH_LOGGING_EXIST</th>
+
+			<th>ELASTICSEARCH_LOGGING_STATUS</th>
+
+			<th>ELASTICSEARCH_LOGGING_RESPONSE_OF_SERVER</th>
+
+			<th>ELASTICSEARCH_ZIPKIN_EXIST</th>
+
+                        <th>ELASTICSEARCH_ZIPKIN_STATUS</th>
+
+                        <th>KIBANA_EXIST</th>
+
+                        <th>KIBANA_STATUS</th>
+
+                        <th>APMSERVEROSS_EXIST</th>
+
+                        <th>APMSERVEROSS_STATUS</th>
+
+                        <th>NODE_EXPORTER_EXIST</th>
+
+                        <th>NODE_EXPORTER_STATUS</th>
+
 		</tr>
+
+		</thead>
+
 		{% for row in data %}
+
 		<tr>
-			<td>{{ row[0] }}</td>
-			<td>{{ row[1] }}</td>
-			<td>{{ row[2] }}</td>
+
+			<td>{{ row[21] }}</td>
+
+                        <td>{{ row[22] }}</td>
+
+			{% if 'yes' in row[1]  %}
+
+				<td class="positive">{{ row[1] }}</td>
+
+			{% else %}
+
+				<td class="negative">{{ row[1] }}</td>
+
+			{% endif %}
+
+			{% if 'X' in row[2]  %}
+
+                                <td class="negative">{{ row[2] }}</td>
+
+			{% elif 'not' in row[2] %}
+
+                                <td class="negative">{{ row[2] }}</td>
+
+                        {% else %}
+
+                                <td class="positive">{{ row[2] }}</td>
+
+                        {% endif %}
+
+			{% if 'yes' in row[3]  %}
+
+                                <td class="positive">{{ row[3] }}</td>
+
+                        {% else %}
+
+                                <td class="negative">{{ row[3] }}</td>
+
+                        {% endif %}
+
+			{% if 'X' in row[4]  %}
+
+                                <td class="negative">{{ row[4] }}</td>
+
+			{% elif 'not' in row[4] %}
+
+                                <td class="negative">{{ row[4] }}</td>
+
+                        {% else %}
+
+                                <td class="positive">{{ row[4] }}</td>
+
+                        {% endif %}
+
+			{% if 'X' in row[5]  %}
+
+                                <td class="negative">{{ row[5] }}</td>
+
+                        {% else %}
+
+                                <td class="positive">{{ row[5] }}</td>
+
+                        {% endif %}
+
+			{% if 'yes' in row[6]  %}
+
+                                <td class="positive">{{ row[6] }}</td>
+
+                        {% else %}
+
+                                <td class="negative">{{ row[6] }}</td>
+
+                        {% endif %}
+
+			{% if 'X' in row[7]  %}
+
+                                <td class="negative">{{ row[7] }}</td>
+
+			{% elif 'not' in row[7] %}
+
+                                <td class="negative">{{ row[7] }}</td>
+
+                        {% else %}
+
+                                <td class="positive">{{ row[7] }}</td>
+
+                        {% endif %}
+
+			{% if 'yes' in row[8]  %}
+
+                                <td class="positive">{{ row[8] }}</td>
+
+                        {% else %}
+
+                                <td class="negative">{{ row[8] }}</td>
+
+                        {% endif %}
+
+			{% if 'X' in row[9] %}
+
+                                <td class="negative">{{ row[9] }}</td>
+
+			{% elif 'not' in row[9] %}
+
+				<td class="negative">{{ row[9] }}</td>
+
+                        {% else %}
+
+                                <td class="positive">{{ row[9] }}</td>
+
+                        {% endif %}
+
+			{% if 'yes' in row[10]  %}
+
+                                <td class="positive">{{ row[10] }}</td>
+
+                        {% else %}
+
+                                <td class="negative">{{ row[10] }}</td>
+
+                        {% endif %}
+
+			{% if 'X' in row[11] %}
+
+                                <td class="negative">{{ row[11] }}</td>
+
+                        {% elif 'not' in row[11] %}
+
+                                <td class="negative">{{ row[11] }}</td>
+
+                        {% else %}
+
+                                <td class="positive">{{ row[11] }}</td>
+
+                        {% endif %}
+
+			{% if 'X' in row[12] %}
+
+                                <td class="negative">{{ row[12] }}</td>
+
+                        {% elif 'not' in row[12] %}
+
+                                <td class="negative">{{ row[12] }}</td>
+
+                        {% else %}
+
+                                <td class="positive">{{ row[12] }}</td>
+
+                        {% endif %}
+
+			{% if 'yes' in row[13]  %}
+
+                                <td class="positive">{{ row[13] }}</td>
+
+                        {% else %}
+
+                                <td class="negative">{{ row[13] }}</td>
+
+                        {% endif %}
+
+			{% if 'X' in row[14] %}
+
+                                <td class="negative">{{ row[14] }}</td>
+
+                        {% elif 'not' in row[14] %}
+
+                                <td class="negative">{{ row[14] }}</td>
+
+                        {% else %}
+
+                                <td class="positive">{{ row[14] }}</td>
+
+                        {% endif %}
+
+			{% if 'yes' in row[15]  %}
+
+                                <td class="positive">{{ row[15] }}</td>
+
+                        {% else %}
+
+                                <td class="negative">{{ row[15] }}</td>
+
+                        {% endif %}
+
+			{% if 'X' in row[16] %}
+
+                                <td class="negative">{{ row[16] }}</td>
+
+                        {% elif 'not' in row[16] %}
+
+                                <td class="negative">{{ row[16] }}</td>
+
+                        {% else %}
+
+                                <td class="positive">{{ row[16] }}</td>
+
+                        {% endif %}
+
+			{% if 'yes' in row[17] %}
+
+                                <td class="positive">{{ row[17] }}</td>
+
+                        {% else %}
+
+                                <td class="negative">{{ row[17] }}</td>
+
+                        {% endif %}
+
+			{% if 'X' in row[18] %}
+
+                                <td class="negative">{{ row[18] }}</td>
+
+                        {% elif 'not' in row[18] %}
+
+                                <td class="negative">{{ row[18] }}</td>
+
+                        {% else %}
+
+                                <td class="positive">{{ row[18] }}</td>
+
+                        {% endif %}
+
+			{% if 'yes' in row[19] %}
+
+                                <td class="positive">{{ row[19] }}</td>
+
+                        {% else %}
+
+                                <td class="negative">{{ row[19] }}</td>
+
+                        {% endif %}
+
+			{% if 'X' in row[20] %}
+
+                                <td class="negative">{{ row[20] }}</td>
+
+                        {% elif 'not' in row[20] %}
+
+                                <td class="negative">{{ row[20] }}</td>
+
+                        {% else %}
+
+                                <td class="positive">{{ row[20] }}</td>
+
+                        {% endif %}
+
+
+
 		</tr>
+
 		{% endfor %}
+
 	</table>
-	<div class="container">
+
 </body>
+
 </html>
+
 
